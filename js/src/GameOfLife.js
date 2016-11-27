@@ -23,15 +23,3 @@ GameOfLife.prototype.NextGeneration = function() {
   this.board = tempBoard;  
 };
 
-GameOfLife.prototype.GenerareInitialState = function(numRows, numColumns) {
-    var initialState = [];
-    for (var i = 0; i < numRows; i++) {
-      initialState.push([]);
-      for (var j = 0; j < numColumns; j++) {
-          initialState[i].push(Math.random() < 0.9 ? 0 : 1);
-      }
-    }
-    return initialState;
-}
-
-
