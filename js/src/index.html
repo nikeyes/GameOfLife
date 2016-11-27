@@ -80,7 +80,7 @@
                 var numRows = 200;
                 var numColumns = 200;
                 var aliveFactorSelect = document.getElementById("aliveFactor");
-                var aliveFactor = aliveFactorSelect.options[aliveFactorSelect.selectedIndex].text;
+                var aliveFactor = aliveFactorSelect.options[aliveFactorSelect.selectedIndex].value;
 
                 var initialStateGenerator = new GameOfLifeInitialStateGenerator();
                 initialState = initialStateGenerator.GetInitialState(numRows,numColumns, aliveFactor);
