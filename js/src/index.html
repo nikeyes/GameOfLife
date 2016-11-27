@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <script src="Cell.js"></script>
+        <script src="Board.js"></script>
+        <script src="GameOfLife.js"></script>
+        <script src="GameOfLifeCanvasRender.js"></script>
+        <script src="GameOfLifeInitialStateGenerator.js"></script>
+    </head>
+    <body>
+        <script>
+            var initialState = [
+                [0, 1, 0, 0, 1, 0, 0, 0, 1],
+                [1, 1, 1, 0, 1, 0, 0, 0, 1],
+                [0, 1, 0, 0, 0, 0, 0, 0, 1],
+                [0, 1, 0, 0, 0, 0, 0, 0, 1],
+                [0, 1, 0, 0, 1, 0, 0, 0, 1],
+                [0, 1, 0, 0, 1, 1, 0, 0, 1],
+                [0, 1, 0, 0, 0, 0, 0, 0, 1],
+                [0, 1, 0, 0, 0, 0, 0, 0, 1],
+                [1, 1, 1, 0, 0, 0, 0, 0, 1]
+            ];
+
+            var numRows = 200;
+            var numColumns = 200;
+            var aliveFactor = 0.2;
+
+            //var initialStateGenerator = new GameOfLifeInitialStateGenerator();
+            //initialState = initialStateGenerator.GetInitialState(numRows,numColumns, aliveFactor);
+
+            var gameOfLife = new GameOfLife(initialState);
+
+            var pixelSize = 5;
+            var numMaxGenerations = 1;
+            var gameOfLifeRenderInitial = new GameOfLifeCanvasRender(gameOfLife, pixelSize, numMaxGenerations);
+
+            pixelSize = 5;
+            numMaxGenerations = 0;
+            var gameOfLifeRenderEvolution = new GameOfLifeCanvasRender(gameOfLife, pixelSize, numMaxGenerations);
+            
+        </script>
+    </body>
+</html>
