@@ -30,7 +30,7 @@ function GameOfLifeCanvasRender(gameOfLife, pixelSize, numMaxGenerations, insert
 
 GameOfLifeCanvasRender.prototype.Render = function(numMaxGenerations) {
     var ctx = this.canvas.getContext("2d");
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "#135AC3";
 
     var stopOnAllDead = true;
     var self = this;
