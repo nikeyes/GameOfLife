@@ -1,7 +1,8 @@
-function GameOfLifeCanvasRender(gameOfLife, pixelSize, numMaxGenerations) {
+function GameOfLifeCanvasRender(gameOfLife, pixelSize, numMaxGenerations, insertionElement) {
     this.gameOfLife = gameOfLife;
     this.generation = 0;
     this.pixelSize = pixelSize;
+    this.insertionElement = insertionElement;
     this.generationLabel = document.createElement("Label");
     this.generationLabel.innerHTML = "Generation: ";
     
@@ -17,12 +18,12 @@ function GameOfLifeCanvasRender(gameOfLife, pixelSize, numMaxGenerations) {
     var sizeYLabel = document.createElement("Label");
     sizeYLabel.innerHTML = "Canvas Height: " + this.canvas.height + " ";
     
-    document.body.appendChild(sizeXLabel);
-    document.body.appendChild(sizeYLabel);
-    document.body.appendChild(this.generationLabel);
-    document.body.appendChild(document.createElement("br"));
-    document.body.appendChild(this.canvas);
-    document.body.appendChild(document.createElement("br"));
+    this.insertionElement.appendChild(sizeXLabel);
+    this.insertionElement.appendChild(sizeYLabel);
+    this.insertionElement.appendChild(this.generationLabel);
+    this.insertionElement.appendChild(document.createElement("br"));
+    this.insertionElement.appendChild(this.canvas);
+    this.insertionElement.appendChild(document.createElement("br"));
     
     this.Render(numMaxGenerations);  
 };
@@ -35,7 +36,6 @@ GameOfLifeCanvasRender.prototype.Render = function(numMaxGenerations) {
     var self = this;
 
     var animation = setInterval(function() {
-    //canvas.addEventListener("keypress", function (e) {
         ctx.clearRect(0, 0, self.canvas.width, self.canvas.height);
 
         stopOnAllDead = true;
@@ -59,6 +59,12 @@ GameOfLifeCanvasRender.prototype.Render = function(numMaxGenerations) {
         if (stopOnAllDead || self.generation === numMaxGenerations) {
             clearInterval(animation);
         }
-    //}, false);
+    
     }, 100);
+}
+
+GameOfLifeCanvasRender.prototype.Clear = function() {
+     while (this.insertionElement.hasChildNodes()) {
+       this.insertionElement.removeChild(this.insertionElement.lastChild);
+    }
 }
